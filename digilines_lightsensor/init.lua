@@ -1,3 +1,11 @@
+-- Boilerplate to support localized strings if intllib mod is installed.
+local S
+if intllib then
+	S = intllib.Getter()
+else
+	S = function(s) return s end
+end
+
 local GET_COMMAND = "GET"
 
 local lsensor_nodebox =
@@ -30,7 +38,7 @@ local on_digiline_receive = function (pos, node, channel, msg)
 end
 
 minetest.register_node("digilines_lightsensor:lightsensor", {
-	description = "Digiline Lightsensor",
+	description = S("Digiline Lightsensor"),
 	drawtype = "nodebox",
 	tiles = {"digilines_lightsensor.png"},
 
@@ -47,7 +55,7 @@ minetest.register_node("digilines_lightsensor:lightsensor", {
 	},
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
-		meta:set_string("formspec", "field[channel;Channel;${channel}]")
+		meta:set_string("formspec", "field[channel;"..S("Channel")..";${channel}]")
 	end,
 	on_receive_fields = function(pos, formname, fields, sender)
 		if (fields.channel) then
