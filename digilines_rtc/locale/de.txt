@@ -1,0 +1,4 @@
+# Translation by Xanthin
+
+Digiline Real Time Clock (RTC) = Digiline Echtzeituhr (RTC)
+Channel = Kanal
