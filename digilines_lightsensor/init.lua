@@ -68,7 +68,7 @@ minetest.register_craft({
 	output = "digilines_lightsensor:lightsensor",
 	recipe = {
 		{"homedecor:plastic_sheeting", "digilines:wire_std_00000000", "homedecor:plastic_sheeting"},
-		{"default:gold_ingot","technic:silicon_wafer","default:gold_ingot"},
+		{"default:gold_ingot","technic:doped_silicon_wafer","default:gold_ingot"},
 		{"homedecor:plastic_sheeting","default:glass","homedecor:plastic_sheeting"}
 	}
 })
