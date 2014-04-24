@@ -2,6 +2,14 @@
 
 -- Font: 04.jp.org
 
+-- Boilerplate to support localized strings if intllib mod is installed.
+local S
+if intllib then
+	S = intllib.Getter()
+else
+	S = function(s) return s end
+end
+
 -- load characters map
 local chars_file = io.open(minetest.get_modpath("digilines_lcd").."/characters", "r")
 local charmap = {}
@@ -33,7 +41,7 @@ local lcds = {
 }
 
 local reset_meta = function(pos)
-	minetest.get_meta(pos):set_string("formspec", "field[channel;Channel;${channel}]")
+	minetest.get_meta(pos):set_string("formspec", "field[channel;"..S("Channel")..";${channel}]")
 end
 
 local clearscreen = function(pos)
@@ -76,7 +84,7 @@ local lcd_box = {
 
 minetest.register_node("digilines_lcd:lcd", {
 	drawtype = "nodebox",
-	description = "Digiline LCD",
+	description = S("Digiline LCD"),
 	inventory_image = "lcd_lcd.png",
 	wield_image = "lcd_lcd.png",
 	tiles = {"lcd_anyside.png"},
