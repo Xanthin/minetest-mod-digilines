@@ -59,3 +59,12 @@ minetest.register_node("digilines_rtc:rtc", {
 		end
 	end,
 })
+
+minetest.register_craft({
+	output = "digilines_rtc:rtc",
+	recipe = {
+		{"homedecor:plastic_sheeting", "digilines:wire_std_00000000", "homedecor:plastic_sheeting"},
+		{"homedecor:plastic_sheeting","default:mese_crystal","homedecor:plastic_sheeting"},
+		{"homedecor:plastic_sheeting","technic:battery","homedecor:plastic_sheeting"}
+	}
+})
