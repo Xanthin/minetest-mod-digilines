@@ -1,3 +1,11 @@
+-- Boilerplate to support localized strings if intllib mod is installed.
+local S
+if intllib then
+	S = intllib.Getter()
+else
+	S = function(s) return s end
+end
+
 -- naming scheme: wire:(xp)(zp)(xm)(zm)_on/off
 -- The conditions in brackets define whether there is a digiline at that place or not
 -- 1 = there is one; 0 = there is none
@@ -79,7 +87,7 @@ for zmy=0, 1 do
 	end
 
 	minetest.register_node("digilines:wire_std_"..nodeid, {
-		description = wiredesc,
+		description = S(wiredesc),
 		drawtype = "nodebox",
 		tiles = tiles,
 		inventory_image = "digiline_std_inv.png",
