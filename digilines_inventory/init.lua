@@ -1,3 +1,11 @@
+-- Boilerplate to support localized strings if intllib mod is installed.
+local S
+if intllib then
+	S = intllib.Getter()
+else
+	S = function(s) return s end
+end
+
 if not minetest.get_modpath("pipeworks") then
 	print("[Digilines] Install pipeworks if you want to use the digilines chest")
 	return
@@ -41,7 +49,7 @@ function maybeString(stack)
 end
 
 mychest = tableMergeImmutable(defaultChest,{
-	description = "Digiline Chest",
+	description = S("Digiline Chest"),
 	digiline = {
 		receptor = {},
 		effector = {
@@ -52,7 +60,7 @@ mychest = tableMergeImmutable(defaultChest,{
 		defaultChest.on_construct(pos)
 		local meta = minetest.get_meta(pos)
 		-- we'll  sneak into row 4 thanks
-		meta:set_string("formspec",meta:get_string("formspec").."\nfield[2,4.5;5,1;channel;Channel;${channel}]")
+		meta:set_string("formspec",meta:get_string("formspec").."\nfield[2,4.5;5,1;channel;"..S("Channel")..";${channel}]")
 	end,
 	on_receive_fields = function(pos, formname, fields, sender)
 		minetest.get_meta(pos):set_string("channel",fields.channel)
